@@ -38,10 +38,15 @@ directory node['drupal_solr']['war_dir'] do
   recursive true
 end
 
-bash "download-solr-#{node['drupal_solr']['version']}" do
+remote_file "#{node['drupal_solr']['war_dir']}/solr-#{node['drupal_solr']['version']}.tgz" do
+  source node['drupal_solr']['url']
+  action :create_if_missing
+end
+
+bash "extract-solr-#{node['drupal_solr']['version']}" do
   cwd node['drupal_solr']['war_dir']
   code <<-EOH
-    curl #{node['drupal_solr']['url']} | tar xz
+    tar xz #{node['drupal_solr']['war_dir']}/solr-#{node['drupal_solr']['version']}.tgz
     cp #{solr_archive}/example/webapps/solr.war .
   EOH
   creates node['drupal_solr']['war_dir'] + "/solr.war"
