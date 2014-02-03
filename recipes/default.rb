@@ -5,7 +5,7 @@
 include_recipe "tomcat"
 include_recipe "curl"
 
-solr_archive = "solr-" + node['drupal_solr']['version']
+solr_archive = "solr"
 
 solr_version = node['drupal_solr']['version'][0,1] + ".x"
 
