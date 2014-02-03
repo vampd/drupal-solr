@@ -5,7 +5,7 @@
 include_recipe "tomcat"
 include_recipe "curl"
 
-solr_archive = "solr"
+solr_archive = "solr-" + node['drupal_solr']['version']
 
 solr_version = node['drupal_solr']['version'][0,1] + ".x"
 
@@ -46,7 +46,7 @@ end
 bash "extract-solr-#{node['drupal_solr']['version']}" do
   cwd node['drupal_solr']['war_dir']
   code <<-EOH
-    tar xz #{node['drupal_solr']['war_dir']}/solr-#{node['drupal_solr']['version']}.tgz
+    tar xvfz #{node['drupal_solr']['war_dir']}/solr-#{node['drupal_solr']['version']}.tgz
     cp #{solr_archive}/example/webapps/solr.war .
   EOH
   creates node['drupal_solr']['war_dir'] + "/solr.war"
