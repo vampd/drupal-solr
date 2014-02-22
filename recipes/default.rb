@@ -22,7 +22,7 @@ include_recipe "curl"
 
 solr_archive = "solr-" + node['drupal_solr']['version']
 
-solr_version = node['drupal_solr']['version'][0,1] + ".x"
+solr_version = node['drupal_solr']['version'][0, 1] + ".x"
 
 # solr home directory
 
@@ -45,7 +45,7 @@ directory "#{node['drupal_solr']['home_dir']}/collection1" do
   group node['tomcat']['group']
 end
 
-#solr.war directory
+# solr.war directory
 directory node['drupal_solr']['war_dir'] do
   owner node['tomcat']['user']
   group node['tomcat']['group']

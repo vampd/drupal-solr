@@ -21,7 +21,7 @@
 default['drupal_solr']['version']   = '4.2.1'
 default['drupal_solr']['url']       = "http://archive.apache.org/dist/lucene/solr/" +
                                        node['drupal_solr']['version'] + "/solr-" +
-                                       node['drupal_solr']['version']+ ".tgz"
+                                       node['drupal_solr']['version'] + ".tgz"
 
 default['drupal_solr']['app_name']  = "solr"
 default['drupal_solr']['war_dir']   = "/opt/solr"
