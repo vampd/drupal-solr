@@ -25,7 +25,7 @@ tomcat
 
 Attributes
 ----------
-
+````
 default['drupal_solr']['version']   = '4.2.1'
 default['drupal_solr']['url']       = "http://archive.apache.org/dist/lucene/solr/" +
                                        node['drupal_solr']['version'] + "/solr-" +
@@ -37,7 +37,7 @@ default['drupal_solr']['home_dir']  = "/opt/solr/#{node['drupal_solr']['app_name
 
 default['drupal_solr']['php_client_url'] =
   "https://solr-php-client.googlecode.com/files/SolrPhpClient.r22.2009-11-09.tgz"
-
+````
 
 Recipes
 -------
