@@ -29,5 +29,3 @@ default['drupal_solr']['home_dir']  = "/opt/solr/#{node['drupal_solr']['app_name
 
 default['drupal_solr']['php_client_url'] =
   "https://solr-php-client.googlecode.com/files/SolrPhpClient.r22.2009-11-09.tgz"
-
-default['tomcat']['keytool'] = "/usr/lib/jvm/java-6-openjdk-amd64/bin/keytool"
