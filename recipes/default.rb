@@ -65,7 +65,6 @@ bash "extract-solr-#{node['drupal_solr']['version']}" do
     cp #{solr_archive}/example/webapps/solr.war .
   EOH
   creates node['drupal_solr']['war_dir'] + "/solr.war"
-  notifies :restart, "service[tomcat]", :delayed
 end
 
 solr_context_file = node['tomcat']['context_dir'] + "/" +
@@ -76,7 +75,6 @@ template solr_context_file do
   group node['tomcat']['group']
   mode 0644
   source "solr_context.xml.erb"
-  notifies :restart, "service[tomcat]"
 end
 
 # Get the Chef::CookbookVersion for this cookbook
