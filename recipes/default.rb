@@ -32,4 +32,15 @@ if node[':drupal_solr'][:copy_config_files].any?
       EOH
     end
   end
+
+  bash "Restart solr service to activate new configuration" do
+    cwd "/"
+    user 'root'
+    cmd = "service solr restart"
+    code <<-EOH
+      set -x
+      set -e
+      #{cmd}
+    EOH
+  end
 end
