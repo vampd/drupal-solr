@@ -19,10 +19,10 @@
 #
 
 # If any solr configuration files are defined for copying, copy them over.
-if node[':drupal_solr'][:copy_config_files].any?
-  node[':drupal_solr'][:copy_config_files].each do |source, destination|
+if node['drupal_solr']['copy_config_files'].any?
+  node['drupal_solr']['copy_config_files'].each do |source, destination|
     bash "Copy solr configuration file from #{source} to #{destination}" do
-      cwd "/"
+      cwd '/'
       user 'root'
       cmd = "cp #{source} #{destination}"
       code <<-EOH
@@ -33,10 +33,10 @@ if node[':drupal_solr'][:copy_config_files].any?
     end
   end
 
-  bash "Restart solr service to activate new configuration" do
-    cwd "/"
+  bash 'Restart solr service to activate new configuration' do
+    cwd '/'
     user 'root'
-    cmd = "service solr restart"
+    cmd = 'service solr restart'
     code <<-EOH
       set -x
       set -e
