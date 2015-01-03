@@ -2,7 +2,8 @@
 # Cookbook Name:: drupal-solr
 # Attributes:: default
 #
-# Copyright (C) 2014 Alex Knoll <arknoll@gmail.com>
+# Copyright (C) 2014 Alex Knoll <arknoll@gmail.com>, Chris Caldwell
+# <chrisolof@gmail.com>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,16 +17,4 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# must be one of the versions available at http://archive.apache.org/dist/lucene/solr/
-# must be consistent with node['drupal_solr']['apachesolr_conf_dir']
-default['drupal_solr']['version']   = '4.2.1'
-default['drupal_solr']['url']       = "http://archive.apache.org/dist/lucene/solr/" +
-                                       node['drupal_solr']['version'] + "/solr-" +
-                                       node['drupal_solr']['version'] + ".tgz"
-
-default['drupal_solr']['app_name']  = "solr"
-default['drupal_solr']['war_dir']   = "/opt/solr"
-default['drupal_solr']['home_dir']  = "/opt/solr/#{node['drupal_solr']['app_name']}"
-
-default['drupal_solr']['php_client_url'] =
-  "https://solr-php-client.googlecode.com/files/SolrPhpClient.r22.2009-11-09.tgz"
+default['drupal_solr']['copy_config_files'] = []
