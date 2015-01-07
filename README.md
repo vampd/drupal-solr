@@ -18,9 +18,7 @@ This cookbook has been tested on Ubuntu Server 12.04.
 
 - `node['drupal_solr']['copy_config_files']` - An array of configuration files to copy, each in the format "source": "destination"
 
-## License and Author
-
-License: [MIT](https://github.com/dwradcliffe/chef-solr/blob/master/LICENSE)
+## Authors and License
 
 Authors: Alex Knoll (arknoll@gmail.com), Chris Caldwell (chrisolof@gmail.com)
 
