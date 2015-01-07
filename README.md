@@ -35,3 +35,37 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
+
+## Vampd Example
+
+This example sets up a basic solr 3.5.0 instance configured for the [apachesolr](https://www.drupal.org/project/apachesolr) Drupal module.
+
+Make sure these two lines are in your Vampd Berksfile:
+
+    cookbook 'solr', '~> 0.3.0'
+    cookbook "drupal-solr", git: "https://github.com/vampd/drupal-solr", tag: "2.0.0"
+
+Make sure solr and drupal-solr are in your run list (chef/roles/base.json within your Vampd directory) AFTER the "recipe[drupal]", line:
+
+    "recipe[solr]",
+    "recipe[drupal-solr]",
+
+Configure your development environment to include a configured solr server instance (chef/environments/development.json within your Vampd directory).  You'll need to add a comma after the bracket that ends the PHP section near the end of that json file, then add the following sections:
+
+    "solr": {
+      "version": "3.5.0",
+      "url": "http://archive.apache.org/dist/lucene/solr/3.5.0/apache-solr-3.5.0.tgz",
+      "port": "8983",
+      "data_dir": "/opt/solr-3.5.0/example/solr"
+    },
+    "drupal_solr": {
+      "copy_config_files": {
+        "/srv/www/example/current/sites/all/modules/contrib/apachesolr/solrconfig.xml": "/opt/solr-3.5.0/example/solr/conf/",
+        "/srv/www/example/current/sites/all/modules/contrib/apachesolr/protwords.txt": "/opt/solr-3.5.0/example/solr/conf/",
+        "/srv/www/example/current/sites/all/modules/contrib/apachesolr/schema.xml": "/opt/solr-3.5.0/example/solr/conf/"
+      }
+    }
+
+Notice that how you configure the solr instance is completey up to you - see the [chef-solr](https://github.com/dwradcliffe/chef-solr) repo for more information on that front.
+
+Also notice that we're copying the three solr configuration files from the [apachesolr](https://www.drupal.org/project/apachesolr) Drupal module from within a specific site (example in this case) on this Vampd development machine into the correct spots into our solr instance's configuration directory.  This is a typical final step in configuring your Solr instance to work with either of the [search_api_solr](https://www.drupal.org/project/search_api_solr) or [apachesolr](https://www.drupal.org/project/apachesolr) Drupal modules.  Please refer to your specific solr module's installation instructions for a listing of the exact files you'll need to copy over.
