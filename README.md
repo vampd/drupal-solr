@@ -60,9 +60,9 @@ Configure your development environment to include a configured solr server insta
     },
     "drupal_solr": {
       "copy_config_files": {
-        "/srv/www/example/current/sites/all/modules/contrib/apachesolr/solrconfig.xml": "/opt/solr-3.5.0/example/solr/conf/",
-        "/srv/www/example/current/sites/all/modules/contrib/apachesolr/protwords.txt": "/opt/solr-3.5.0/example/solr/conf/",
-        "/srv/www/example/current/sites/all/modules/contrib/apachesolr/schema.xml": "/opt/solr-3.5.0/example/solr/conf/"
+        "/srv/www/[site_name]/current/sites/all/modules/contrib/apachesolr/solr-conf/solr-3.x/solrconfig.xml": "/opt/solr-3.5.0/example/solr/conf/",
+        "/srv/www/[site_name]/current/sites/all/modules/contrib/apachesolr/solr-conf/solr-3.x/protwords.txt": "/opt/solr-3.5.0/example/solr/conf/",
+        "/srv/www/[site_name]/current/sites/all/modules/contrib/apachesolr/solr-conf/solr-3.x/schema.xml": "/opt/solr-3.5.0/example/solr/conf/"
       }
     }
 
